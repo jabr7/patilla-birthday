@@ -267,6 +267,17 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
     share.seed,
   ]);
 
+  const endingTheme = useMemo(() => {
+    const themes: Record<string, { qrFg: string; qrBg: string; sealText: string }> = {
+      absolucion_prolija: { qrFg: '#d9f99d', qrBg: '#0b0b0a', sealText: 'Absolucion' },
+      probation_institucional: { qrFg: '#93c5fd', qrBg: '#0a0b12', sealText: 'Suspenso' },
+      condena_cursed: { qrFg: '#f87171', qrBg: '#0b0505', sealText: 'Condena' },
+      toma_abitab: { qrFg: '#fbbf24', qrBg: '#0b0b08', sealText: 'ABITAB' },
+      estado_uwu: { qrFg: '#f472b6', qrBg: '#0b0710', sealText: 'UwU Estado' },
+    };
+    return themes[endingEntry.id] ?? themes.probation_institucional;
+  }, [endingEntry.id]);
+
   const shareTitle = `Juicio de Cristina con Patilla — ${titleText}`;
 
   const buildPngDataUrl = useCallback(async (): Promise<string | null> => {
@@ -361,7 +372,7 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
   }, [autoShareDone, certFromHash, handleAutoShare]);
 
   return (
-    <div className="final-judgment">
+    <div className={`final-judgment ending-${endingEntry.id}`}>
       <StageImage corruption={effective.corruption} historyFlags={effective.flags} />
       <div className="game-content">
         <button onClick={() => onNavigate('MainMenu')}>Volver al Menú</button>
@@ -440,7 +451,7 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
           <div className="ending-text">{endingEntry.text}</div>
         </div>
 
-        <div className="certificate-card" ref={certificateRef}>
+        <div className={`certificate-card ending-${endingEntry.id}`} ref={certificateRef}>
           <div className="certificate-header">
             <div className="certificate-info">
               <div className="certificate-title">Certificado oficial</div>
@@ -473,12 +484,12 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
             </div>
           </div>
           <div className="certificate-qr">
-            <QRCodeCanvas value={share.url} size={160} bgColor="#000000" fgColor="#fbbf24" includeMargin />
+            <QRCodeCanvas value={share.url} size={160} bgColor={endingTheme.qrBg} fgColor={endingTheme.qrFg} includeMargin />
           </div>
           <div className="certificate-foot">
             Emitido: {new Date(effective.issuedAt).toLocaleString()}
           </div>
-          <div className="certificate-seal">Sello Patilla</div>
+          <div className="certificate-seal">{endingTheme.sealText}</div>
         </div>
 
         <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -494,7 +505,7 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
             <div className="outcome">
               <h3>Compartir certificado</h3>
               <div className="certificate-qr" style={{ marginTop: '1rem' }}>
-                <QRCodeCanvas value={share.url} size={220} bgColor="#000000" fgColor="#fbbf24" includeMargin />
+                <QRCodeCanvas value={share.url} size={220} bgColor={endingTheme.qrBg} fgColor={endingTheme.qrFg} includeMargin />
               </div>
               <div
                 style={{

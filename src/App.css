@@ -620,6 +620,282 @@
   z-index: 1;
 }
 
+.final-judgment.ending-absolucion_prolija .ending-box {
+  border-left-color: rgba(163, 230, 53, 0.9);
+  background: rgba(163, 230, 53, 0.08);
+}
+
+.final-judgment.ending-probation_institucional .ending-box {
+  border-left-color: rgba(96, 165, 250, 0.9);
+  background: rgba(96, 165, 250, 0.08);
+}
+
+.final-judgment.ending-condena_cursed .ending-box {
+  border-left-color: rgba(239, 68, 68, 0.9);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.final-judgment.ending-toma_abitab .ending-box {
+  border-left-color: rgba(251, 191, 36, 0.9);
+  background: rgba(251, 191, 36, 0.08);
+}
+
+.final-judgment.ending-estado_uwu .ending-box {
+  border-left-color: rgba(244, 114, 182, 0.95);
+  background: rgba(244, 114, 182, 0.08);
+}
+
+.final-judgment.ending-absolucion_prolija .game-content {
+  box-shadow: var(--shadow-propaganda),
+              inset 0 0 60px rgba(163, 230, 53, 0.08);
+}
+
+.final-judgment.ending-probation_institucional .game-content {
+  box-shadow: var(--shadow-propaganda),
+              inset 0 0 60px rgba(96, 165, 250, 0.1);
+}
+
+.final-judgment.ending-condena_cursed .game-content {
+  box-shadow: var(--shadow-propaganda),
+              inset 0 0 80px rgba(239, 68, 68, 0.18);
+}
+
+.final-judgment.ending-toma_abitab .game-content {
+  box-shadow: var(--shadow-propaganda),
+              inset 0 0 60px rgba(251, 191, 36, 0.14);
+}
+
+.final-judgment.ending-estado_uwu .game-content {
+  box-shadow: var(--shadow-propaganda),
+              inset 0 0 80px rgba(244, 114, 182, 0.16);
+}
+
+.final-judgment.ending-absolucion_prolija .dossier {
+  border-left-color: rgba(163, 230, 53, 0.85);
+  background: linear-gradient(135deg, rgba(163, 230, 53, 0.08), rgba(10, 10, 10, 0.9));
+}
+
+.final-judgment.ending-probation_institucional .dossier {
+  border-left-color: rgba(96, 165, 250, 0.85);
+  background: linear-gradient(135deg, rgba(96, 165, 250, 0.08), rgba(10, 10, 10, 0.9));
+}
+
+.final-judgment.ending-condena_cursed .dossier {
+  border-left-color: rgba(239, 68, 68, 0.9);
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(10, 6, 6, 0.95));
+}
+
+.final-judgment.ending-toma_abitab .dossier {
+  border-left-color: rgba(251, 191, 36, 0.9);
+  background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(10, 10, 8, 0.95));
+}
+
+.final-judgment.ending-estado_uwu .dossier {
+  border-left-color: rgba(244, 114, 182, 0.95);
+  background: linear-gradient(135deg, rgba(244, 114, 182, 0.1), rgba(10, 8, 12, 0.95));
+}
+
+.final-judgment.ending-absolucion_prolija .dossier-section {
+  border-color: rgba(163, 230, 53, 0.35);
+}
+
+.final-judgment.ending-probation_institucional .dossier-section {
+  border-color: rgba(96, 165, 250, 0.35);
+}
+
+.final-judgment.ending-condena_cursed .dossier-section {
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.final-judgment.ending-toma_abitab .dossier-section {
+  border-color: rgba(251, 191, 36, 0.4);
+}
+
+.final-judgment.ending-estado_uwu .dossier-section {
+  border-color: rgba(244, 114, 182, 0.45);
+}
+
+.final-judgment.ending-absolucion_prolija .verdict {
+  border-left-color: rgba(163, 230, 53, 0.85);
+  background: rgba(163, 230, 53, 0.08);
+}
+
+.final-judgment.ending-probation_institucional .verdict {
+  border-left-color: rgba(96, 165, 250, 0.85);
+  background: rgba(96, 165, 250, 0.08);
+}
+
+.final-judgment.ending-condena_cursed .verdict {
+  border-left-color: rgba(239, 68, 68, 0.9);
+  background: rgba(239, 68, 68, 0.08);
+}
+
+.final-judgment.ending-toma_abitab .verdict {
+  border-left-color: rgba(251, 191, 36, 0.9);
+  background: rgba(251, 191, 36, 0.08);
+}
+
+.final-judgment.ending-estado_uwu .verdict {
+  border-left-color: rgba(244, 114, 182, 0.95);
+  background: rgba(244, 114, 182, 0.08);
+}
+.certificate-card.ending-absolucion_prolija {
+  border-color: rgba(163, 230, 53, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45),
+              inset 0 0 0 1px rgba(163, 230, 53, 0.2);
+  background: linear-gradient(135deg, rgba(8, 12, 8, 0.98), rgba(6, 10, 6, 0.98));
+}
+
+.certificate-card.ending-absolucion_prolija::before {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(163, 230, 53, 0.25), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba(251, 191, 36, 0.2), transparent 40%),
+    url("/images/christina%20kischner.png");
+  opacity: 0.1;
+}
+
+.certificate-card.ending-absolucion_prolija .certificate-title,
+.certificate-card.ending-absolucion_prolija .certificate-meta span:last-child,
+.certificate-card.ending-absolucion_prolija .certificate-row span:last-child {
+  color: rgba(217, 249, 157, 0.95);
+}
+
+.certificate-card.ending-absolucion_prolija .certificate-portrait {
+  border-color: rgba(163, 230, 53, 0.6);
+}
+
+.certificate-card.ending-absolucion_prolija .certificate-seal {
+  border-color: rgba(163, 230, 53, 0.6);
+  color: rgba(217, 249, 157, 0.95);
+  background: rgba(12, 20, 10, 0.7);
+}
+
+.certificate-card.ending-probation_institucional {
+  border-color: rgba(96, 165, 250, 0.55);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+              inset 0 0 0 1px rgba(96, 165, 250, 0.25);
+  background: linear-gradient(135deg, rgba(7, 10, 14, 0.98), rgba(6, 8, 12, 0.98));
+}
+
+.certificate-card.ending-probation_institucional::before {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(96, 165, 250, 0.25), transparent 45%),
+    radial-gradient(circle at 70% 0%, rgba(59, 130, 246, 0.2), transparent 40%),
+    repeating-linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0 2px, transparent 2px 10px);
+  opacity: 0.12;
+}
+
+.certificate-card.ending-probation_institucional .certificate-title,
+.certificate-card.ending-probation_institucional .certificate-meta span:last-child,
+.certificate-card.ending-probation_institucional .certificate-row span:last-child {
+  color: rgba(147, 197, 253, 0.95);
+}
+
+.certificate-card.ending-probation_institucional .certificate-portrait {
+  border-color: rgba(96, 165, 250, 0.6);
+}
+
+.certificate-card.ending-probation_institucional .certificate-seal {
+  border-color: rgba(96, 165, 250, 0.6);
+  color: rgba(147, 197, 253, 0.95);
+  background: rgba(8, 12, 18, 0.7);
+}
+
+.certificate-card.ending-condena_cursed {
+  border-color: rgba(239, 68, 68, 0.6);
+  box-shadow: 0 22px 45px rgba(0, 0, 0, 0.6),
+              inset 0 0 0 1px rgba(239, 68, 68, 0.3);
+  background: linear-gradient(135deg, rgba(16, 6, 6, 0.98), rgba(10, 5, 5, 0.98));
+}
+
+.certificate-card.ending-condena_cursed::before {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(239, 68, 68, 0.35), transparent 45%),
+    radial-gradient(circle at 85% 10%, rgba(127, 29, 29, 0.3), transparent 45%),
+    repeating-linear-gradient(90deg, rgba(239, 68, 68, 0.15) 0 3px, transparent 3px 11px);
+  opacity: 0.16;
+}
+
+.certificate-card.ending-condena_cursed .certificate-title,
+.certificate-card.ending-condena_cursed .certificate-meta span:last-child,
+.certificate-card.ending-condena_cursed .certificate-row span:last-child {
+  color: rgba(248, 113, 113, 0.95);
+}
+
+.certificate-card.ending-condena_cursed .certificate-portrait {
+  border-color: rgba(239, 68, 68, 0.7);
+}
+
+.certificate-card.ending-condena_cursed .certificate-seal {
+  border-color: rgba(239, 68, 68, 0.8);
+  color: rgba(248, 113, 113, 0.95);
+  background: rgba(20, 5, 5, 0.75);
+}
+
+.certificate-card.ending-toma_abitab {
+  border-color: rgba(251, 191, 36, 0.7);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5),
+              inset 0 0 0 1px rgba(251, 191, 36, 0.3);
+  background: linear-gradient(135deg, rgba(14, 12, 6, 0.98), rgba(10, 8, 4, 0.98));
+}
+
+.certificate-card.ending-toma_abitab::before {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(251, 191, 36, 0.35), transparent 45%),
+    radial-gradient(circle at 75% 0%, rgba(196, 30, 58, 0.2), transparent 40%),
+    url("/images/abitab.jpg");
+  background-size: cover, cover, 160px 160px;
+  background-position: left 20% top 10%, right 20% top 10%, center;
+  opacity: 0.12;
+}
+
+.certificate-card.ending-toma_abitab .certificate-title,
+.certificate-card.ending-toma_abitab .certificate-meta span:last-child,
+.certificate-card.ending-toma_abitab .certificate-row span:last-child {
+  color: rgba(251, 191, 36, 0.95);
+}
+
+.certificate-card.ending-toma_abitab .certificate-portrait {
+  border-color: rgba(251, 191, 36, 0.6);
+}
+
+.certificate-card.ending-toma_abitab .certificate-seal {
+  border-color: rgba(251, 191, 36, 0.8);
+  color: rgba(251, 191, 36, 0.95);
+  background: rgba(18, 12, 4, 0.8);
+}
+
+.certificate-card.ending-estado_uwu {
+  border-color: rgba(244, 114, 182, 0.65);
+  box-shadow: 0 24px 45px rgba(0, 0, 0, 0.55),
+              inset 0 0 0 1px rgba(94, 234, 212, 0.25);
+  background: linear-gradient(135deg, rgba(14, 6, 16, 0.98), rgba(8, 4, 12, 0.98));
+}
+
+.certificate-card.ending-estado_uwu::before {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(244, 114, 182, 0.35), transparent 45%),
+    radial-gradient(circle at 85% 0%, rgba(94, 234, 212, 0.3), transparent 45%),
+    repeating-linear-gradient(120deg, rgba(94, 234, 212, 0.12) 0 3px, transparent 3px 12px);
+  opacity: 0.14;
+}
+
+.certificate-card.ending-estado_uwu .certificate-title,
+.certificate-card.ending-estado_uwu .certificate-meta span:last-child,
+.certificate-card.ending-estado_uwu .certificate-row span:last-child {
+  color: rgba(244, 114, 182, 0.95);
+}
+
+.certificate-card.ending-estado_uwu .certificate-portrait {
+  border-color: rgba(244, 114, 182, 0.6);
+}
+
+.certificate-card.ending-estado_uwu .certificate-seal {
+  border-color: rgba(244, 114, 182, 0.8);
+  color: rgba(244, 114, 182, 0.95);
+  background: rgba(16, 6, 16, 0.8);
+}
+
 @media (max-width: 768px) {
   .dossier-grid {
     grid-template-columns: 1fr;
