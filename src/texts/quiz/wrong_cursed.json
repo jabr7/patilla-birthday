@@ -41,5 +41,53 @@
   {
     "text": "CEICO te paga en experiencia… y la experiencia te humilla.",
     "tags": ["ceico_experience_pay", "ceico_fmi_personal", "ceico_boss_ship", "ceico_pachamama_lore"]
+  },
+  {
+    "text": "Tu respuesta activó “continuidad alternativa”: el timeline te dejó en visto.",
+    "tags": ["knee_surgery"]
+  },
+  {
+    "text": "La abuela tiró cuetes y vos tiraste cualquiera. Explosión doble.",
+    "tags": ["abuela_cuetes"]
+  },
+  {
+    "text": "Dijiste “normalidad latinoamericana” y el universo respondió con inflación narrativa.",
+    "tags": ["latam_mode"]
+  },
+  {
+    "text": "Tu respuesta se perdió en la cordillera y volvió convertida en leyenda urbana.",
+    "tags": ["andes_protocol"]
+  },
+  {
+    "text": "ORT: entraste al lore equivocado y ahora no encontrás la salida.",
+    "tags": ["ort_lore"]
+  },
+  {
+    "text": "Intentaste invocar “ONU chiquita” y te salió un comité de errores 500.",
+    "tags": ["ort_model_un"]
+  },
+  {
+    "text": "Mandaste “patch notes” a Shabat y te respondió el caos con un ban temporal.",
+    "tags": ["shabbat_patch"]
+  },
+  {
+    "text": "Declaraste cese al fuego y el caos te tiró artillería doméstica.",
+    "tags": ["shabbat_ceasefire"]
+  },
+  {
+    "text": "Ese Luky en 4K no te salva: el timeline igual te juzga.",
+    "tags": ["luky_police_yell"]
+  },
+  {
+    "text": "Arrancaste en quinta y rompiste la caja de cambios del timeline.",
+    "tags": ["start_in_5th_boni"]
+  },
+  {
+    "text": "Jazmín te mira como si supiera el final. Y sí: erraste igual.",
+    "tags": ["jazmin_dog"]
+  },
+  {
+    "text": "Micky Vainilla te metió un jingle en la cabeza y te fuiste del examen.",
+    "tags": ["micky_vainilla_marketing"]
   }
 ]

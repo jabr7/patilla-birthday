@@ -71,16 +71,24 @@ export function decodeCertificatePayload(encoded: string): CertificatePayloadV1 
 
 export function readCertificateFromHash(hash: string): CertificatePayloadV1 | null {
   const trimmed = hash.startsWith('#') ? hash.slice(1) : hash;
-  const prefix = 'cert=';
-  if (!trimmed.startsWith(prefix)) return null;
-  const encoded = trimmed.slice(prefix.length);
+  if (!trimmed) return null;
+  const parts = trimmed.split('&').map((part) => part.trim());
+  const certPart = parts.find((part) => part.startsWith('cert='));
+  if (!certPart) return null;
+  const encoded = certPart.slice('cert='.length);
   if (!encoded) return null;
   return decodeCertificatePayload(encoded);
 }
 
 export function buildCertificateShareUrl(encoded: string): string {
   const { origin, pathname } = window.location;
-  return `${origin}${pathname}#cert=${encoded}`;
+  return `${origin}${pathname}#cert=${encoded}&dl=1`;
+}
+
+export function hasCertificateDownloadFlag(hash: string): boolean {
+  const trimmed = hash.startsWith('#') ? hash.slice(1) : hash;
+  if (!trimmed) return false;
+  return trimmed.split('&').some((part) => part.trim().toLowerCase() === 'dl=1');
 }
 
 export function clearCertificateHash(): void {

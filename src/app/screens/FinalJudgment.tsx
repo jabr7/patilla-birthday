@@ -1,4 +1,4 @@
-import { useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { QRCodeCanvas } from 'qrcode.react';
 import { toPng } from 'html-to-image';
 import { StageImage } from '../../components/StageImage';
@@ -18,6 +18,7 @@ import {
   buildCertificateShareUrl,
   encodeCertificatePayload,
   fnv1a32,
+  hasCertificateDownloadFlag,
   mulberry32,
   readCertificateFromHash,
   type CertificatePayloadV1,
@@ -165,6 +166,7 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
   const { state } = useGame();
   const [showShare, setShowShare] = useState(false);
   const [issuedAt] = useState(() => Date.now());
+  const [autoShareDone, setAutoShareDone] = useState(false);
   const certificateRef = useRef<HTMLDivElement | null>(null);
 
   const certFromHash = readCertificateFromHash(window.location.hash);
@@ -267,21 +269,37 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
 
   const shareTitle = `Juicio de Cristina con Patilla — ${titleText}`;
 
-  const handleDownloadPng = async () => {
-    if (!certificateRef.current) return;
-    const dataUrl = await toPng(certificateRef.current, { cacheBust: true, pixelRatio: 2 });
-    const a = document.createElement('a');
-    a.href = dataUrl;
-    a.download = `juicio-de-cristina-${share.seed}.png`;
-    a.click();
-  };
+  const buildPngDataUrl = useCallback(async (): Promise<string | null> => {
+    if (!certificateRef.current) return null;
+    return await toPng(certificateRef.current, { cacheBust: true, pixelRatio: 2 });
+  }, []);
 
-  const handleShare = async () => {
+  const downloadPngDataUrl = useCallback(
+    (dataUrl: string) => {
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `juicio-de-cristina-${share.seed}.png`;
+      a.click();
+    },
+    [share.seed]
+  );
+
+  const handleDownloadPng = useCallback(async () => {
+    const dataUrl = await buildPngDataUrl();
+    if (!dataUrl) return;
+    downloadPngDataUrl(dataUrl);
+  }, [buildPngDataUrl, downloadPngDataUrl]);
+
+  const handleShare = useCallback(async () => {
     if (!certificateRef.current) {
       setShowShare(true);
       return;
     }
-    const dataUrl = await toPng(certificateRef.current, { cacheBust: true, pixelRatio: 2 });
+    const dataUrl = await buildPngDataUrl();
+    if (!dataUrl) {
+      setShowShare(true);
+      return;
+    }
     const response = await fetch(dataUrl);
     const blob = await response.blob();
     const file = new File([blob], `juicio-de-cristina-${share.seed}.png`, { type: 'image/png' });
@@ -304,7 +322,43 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
       }
     }
     setShowShare(true);
-  };
+  }, [buildPngDataUrl, share.seed, share.url, shareTitle]);
+
+  const handleAutoShare = useCallback(async () => {
+    const dataUrl = await buildPngDataUrl();
+    if (!dataUrl) return;
+    const response = await fetch(dataUrl);
+    const blob = await response.blob();
+    const file = new File([blob], `juicio-de-cristina-${share.seed}.png`, { type: 'image/png' });
+    const canShareFiles =
+      typeof navigator !== 'undefined' &&
+      typeof navigator.share === 'function' &&
+      (typeof navigator.canShare !== 'function' || navigator.canShare({ files: [file] }));
+
+    if (canShareFiles) {
+      try {
+        await navigator.share({
+          title: shareTitle,
+          text: 'Juicio de Cristina con Patilla',
+          url: share.url,
+          files: [file],
+        });
+        return;
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
+    downloadPngDataUrl(dataUrl);
+  }, [buildPngDataUrl, downloadPngDataUrl, share.seed, share.url, shareTitle]);
+
+  useEffect(() => {
+    if (!certFromHash) return;
+    if (!hasCertificateDownloadFlag(window.location.hash)) return;
+    if (autoShareDone) return;
+    setAutoShareDone(true);
+    void handleAutoShare();
+  }, [autoShareDone, certFromHash, handleAutoShare]);
 
   return (
     <div className="final-judgment">
@@ -387,8 +441,19 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
         </div>
 
         <div className="certificate-card" ref={certificateRef}>
-          <div className="certificate-title">Certificado oficial</div>
-          <div className="certificate-subtitle">{shareTitle}</div>
+          <div className="certificate-header">
+            <div className="certificate-info">
+              <div className="certificate-title">Certificado oficial</div>
+              <div className="certificate-subtitle">{shareTitle}</div>
+              <div className="certificate-meta">
+                <span>Expediente</span>
+                <span>{share.seed}</span>
+              </div>
+            </div>
+            <div className="certificate-portrait">
+              <img src="/images/christina%20kischner.png" alt="Cristina" />
+            </div>
+          </div>
           <div className="certificate-grid">
             <div className="certificate-row">
               <span>Estabilidad</span>
@@ -413,6 +478,7 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
           <div className="certificate-foot">
             Emitido: {new Date(effective.issuedAt).toLocaleString()}
           </div>
+          <div className="certificate-seal">Sello Patilla</div>
         </div>
 
         <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>

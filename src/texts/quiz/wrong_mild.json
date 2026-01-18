@@ -46,5 +46,53 @@
   {
     "text": "Boca perdió y tu análisis también: empate técnico.",
     "tags": ["boca_duelo"]
+  },
+  {
+    "text": "Esa opción fue puro fanfic histórico: el timeline te la rebotó.",
+    "tags": ["knee_surgery"]
+  },
+  {
+    "text": "La abuela metió cuetes, pero tu respuesta explotó primero.",
+    "tags": ["abuela_cuetes"]
+  },
+  {
+    "text": "Tiraste “normalidad latinoamericana” y el universo dijo: “sí, pero no”.",
+    "tags": ["latam_mode"]
+  },
+  {
+    "text": "Tu explicación se fue a la cordillera sin oxígeno y no volvió.",
+    "tags": ["andes_protocol"]
+  },
+  {
+    "text": "ORT lore: entraste por la puerta del meme y saliste por la ventana.",
+    "tags": ["ort_lore"]
+  },
+  {
+    "text": "Cargaste “ONU chiquita” y el sistema lo marcó como DLC no instalado.",
+    "tags": ["ort_model_un"]
+  },
+  {
+    "text": "Le mandaste “patch notes” a Shabat y te devolvió un 403: descanso.",
+    "tags": ["shabbat_patch"]
+  },
+  {
+    "text": "Declaraste un cese al fuego doméstico y el caos firmó “rechazado”.",
+    "tags": ["shabbat_ceasefire"]
+  },
+  {
+    "text": "Ese grito del Luky no era un feriado: era una cutscene no canónica.",
+    "tags": ["luky_police_yell"]
+  },
+  {
+    "text": "Arrancaste en quinta y te pasaste el evento por arriba.",
+    "tags": ["start_in_5th_boni"]
+  },
+  {
+    "text": "Jazmín te mira fijo. Vos no entendés por qué, pero sabés que erraste.",
+    "tags": ["jazmin_dog"]
+  },
+  {
+    "text": "Te compraste el jingle. El marketing ganó y la historia perdió.",
+    "tags": ["micky_vainilla_marketing"]
   }
 ]

@@ -5,9 +5,11 @@ import type { Screen } from '../types';
 
 interface MainMenuProps {
   onNavigate: (screen: Screen) => void;
+  musicEnabled: boolean;
+  onToggleMusic: () => void;
 }
 
-export function MainMenu({ onNavigate }: MainMenuProps) {
+export function MainMenu({ onNavigate, musicEnabled, onToggleMusic }: MainMenuProps) {
   const { state } = useGame();
   const canAccessFinalJudgment = hasPlayedAnyGame(state);
 
@@ -18,6 +20,9 @@ export function MainMenu({ onNavigate }: MainMenuProps) {
         <h1>Experiencia Interactiva Peronista</h1>
         <p className="tagline">La historia la escriben los que responden bien.</p>
         <div className="menu-buttons">
+          <button onClick={onToggleMusic}>
+            Aprete aqui para sentir el peronismo ({musicEnabled ? 'ON' : 'OFF'})
+          </button>
           <button onClick={() => onNavigate('CoreGame')}>
             Comenzar Evaluación Histórica
           </button>
