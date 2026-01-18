@@ -209,43 +209,51 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
     effective.flags,
   ]);
 
-  const titleText = useMemo(() => {
-    if (certFromHash) {
-      const rng = mulberry32(share.seed ^ 0x2c1b3c6d);
-      return pickTextSeeded(judgmentTitles as unknown as TextEntry[], effective.flags, rng);
-    }
-    return pickText(judgmentTitles as unknown as TextEntry[], effective.flags);
-  }, [certFromHash, effective.flags, share.seed]);
-
   const endingEntry = useMemo(() => {
     return getEnding(endings as unknown as EndingEntry[], effective.flags, effective.corruption, accuracyPct);
   }, [accuracyPct, effective.corruption, effective.flags]);
+
+  const endingFlags = useMemo(() => {
+    const map: Record<string, string[]> = {
+      toma_abitab: ['abitab', 'abitab_base'],
+      estado_uwu: ['furry_diplomacy'],
+    };
+    return map[endingEntry.id] ?? effective.flags;
+  }, [endingEntry.id, effective.flags]);
+
+  const titleText = useMemo(() => {
+    if (certFromHash) {
+      const rng = mulberry32(share.seed ^ 0x2c1b3c6d);
+      return pickTextSeeded(judgmentTitles as unknown as TextEntry[], endingFlags, rng);
+    }
+    return pickText(judgmentTitles as unknown as TextEntry[], endingFlags);
+  }, [certFromHash, endingFlags, share.seed]);
 
   const dossierData = dossier as unknown as DossierData;
 
   const charges = useMemo(() => {
     const rng = mulberry32(share.seed ^ 0x51c3b0a1);
-    const items = pickUniqueSeeded(dossierData.charges, effective.flags, rng, 3);
+    const items = pickUniqueSeeded(dossierData.charges, endingFlags, rng, 3);
     if (effective.corruption >= 4) {
       return ['Manipulación temporal agravada (corrupción histórica premium).', ...items].slice(0, 4);
     }
     return items;
-  }, [dossierData.charges, effective.corruption, effective.flags, share.seed]);
+  }, [dossierData.charges, effective.corruption, endingFlags, share.seed]);
 
   const evidence = useMemo(() => {
     const rng = mulberry32(share.seed ^ 0x1f9e3779);
-    return pickUniqueSeeded(dossierData.evidence, effective.flags, rng, 4);
-  }, [dossierData.evidence, effective.flags, share.seed]);
+    return pickUniqueSeeded(dossierData.evidence, endingFlags, rng, 4);
+  }, [dossierData.evidence, endingFlags, share.seed]);
 
   const witnesses = useMemo(() => {
     const rng = mulberry32(share.seed ^ 0x9e3779b9);
-    return pickUniqueSeeded(dossierData.witnesses, effective.flags, rng, 3);
-  }, [dossierData.witnesses, effective.flags, share.seed]);
+    return pickUniqueSeeded(dossierData.witnesses, endingFlags, rng, 3);
+  }, [dossierData.witnesses, endingFlags, share.seed]);
 
   const sentenceLine = useMemo(() => {
     const rng = mulberry32(share.seed ^ 0xa5a5a5a5);
-    return pickTextSeeded(dossierData.sentences, effective.flags, rng);
-  }, [dossierData.sentences, effective.flags, share.seed]);
+    return pickTextSeeded(dossierData.sentences, endingFlags, rng);
+  }, [dossierData.sentences, endingFlags, share.seed]);
 
   const personalizedVerdict = useMemo(() => {
     const rng = certFromHash ? mulberry32(share.seed ^ 0xdeadbeef) : undefined;
