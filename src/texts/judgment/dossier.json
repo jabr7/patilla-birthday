@@ -1,0 +1,99 @@
+{
+  "charges": [
+    "Desacato a la Historia (en presencia de Patilla).",
+    {
+      "text": "Operación ABITAB no declarada: soberanía de ventanilla.",
+      "tags": ["abitab", "abitab_base"]
+    },
+    {
+      "text": "Diplomacia furry sin licencia: exportación de “uwu” a terceros mercados.",
+      "tags": ["furry_diplomacy"]
+    },
+    {
+      "text": "CEICO: cobro en experiencia con intención de lucro moral.",
+      "tags": ["ceico_experience_pay", "ceico_fmi_personal", "ceico_boss_ship", "ceico_pachamama_lore"]
+    },
+    {
+      "text": "Tesis en modo fantasma: aportes no verificados en Google Docs.",
+      "tags": ["tesis_ghost_member", "tesis_docs_war"]
+    },
+    {
+      "text": "Incidente del pingüino: reescritura no autorizada del relato.",
+      "tags": ["pinguino_incident"]
+    },
+    {
+      "text": "Turn-based reality: Civ 4 como marco interpretativo total.",
+      "tags": ["civ4_fan"]
+    },
+    {
+      "text": "Duelo bostero institucional: suspensión del asado por decreto.",
+      "tags": ["boca_duelo"]
+    }
+  ],
+  "evidence": [
+    "Capturas de timeline con timestamps imposibles.",
+    {
+      "text": "Ticket ABITAB con tinta de soberanía.",
+      "tags": ["abitab", "abitab_base"]
+    },
+    {
+      "text": "PDF de 80 páginas que no dice nada (pero suena a ONU).",
+      "tags": ["onu_burocrata", "liberal"]
+    },
+    {
+      "text": "Un “uwu” firmado como doctrina de Estado.",
+      "tags": ["furry_diplomacy"]
+    },
+    {
+      "text": "Recibo CEICO: “pago en experiencia” (sin firma, pero con trauma).",
+      "tags": ["ceico_experience_pay", "ceico_fmi_personal"]
+    },
+    {
+      "text": "Google Docs de tesis: 47 comentarios y 0 aportes reales.",
+      "tags": ["tesis_ghost_member", "tesis_docs_war"]
+    },
+    {
+      "text": "Acta “pingüino”: el expediente se autocompleta solo.",
+      "tags": ["pinguino_incident"]
+    }
+  ],
+  "witnesses": [
+    "Patilla (perito en RI y daños temporales).",
+    {
+      "text": "ABITAB (testigo técnico: “sí, yo lo vi”).",
+      "tags": ["abitab", "abitab_base"]
+    },
+    {
+      "text": "La Pachamama (perito ad-hoc de CEICO).",
+      "tags": ["ceico_pachamama_lore", "ceico_boss_ship"]
+    },
+    {
+      "text": "Delegación UwU (observadores internacionales).",
+      "tags": ["furry_diplomacy"]
+    },
+    {
+      "text": "Compañero de tesis fantasma (declara por Teams, cámara apagada).",
+      "tags": ["tesis_ghost_member"]
+    }
+  ],
+  "sentences": [
+    "Sentencia: se ordena tocar pasto con efecto inmediato.",
+    {
+      "text": "Sentencia: realizar prácticas supervisadas en ABITAB hasta entender el Estado.",
+      "tags": ["abitab", "abitab_base"]
+    },
+    {
+      "text": "Sentencia: prohibición preventiva de decir “uwu” en foros multilaterales.",
+      "tags": ["furry_diplomacy"]
+    },
+    {
+      "text": "Sentencia: pagar la multa en experiencia (CEICO edition).",
+      "tags": ["ceico_experience_pay"]
+    },
+    {
+      "text": "Sentencia: reescribir la tesis, pero esta vez con aportes reales.",
+      "tags": ["tesis_ghost_member", "tesis_docs_war"]
+    }
+  ]
+}
+

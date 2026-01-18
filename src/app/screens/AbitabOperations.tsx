@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StageImage } from '../../components/StageImage';
-import { useGame } from '../GameProvider';
+import { useGame } from '../useGame';
 import type { Screen } from '../types';
 
 interface AbitabOperationsProps {
@@ -37,7 +37,7 @@ export function AbitabOperations({ onNavigate }: AbitabOperationsProps) {
           <>
             <p>Modo ABITAB: ACTIVADO. El fondo y los textos ahora están intervenidos.</p>
             <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <button onClick={() => onNavigate('CoreGame')}>Ir al Core</button>
+              <button onClick={() => onNavigate('CoreGame')}>Ir al Juicio</button>
               <button onClick={handleDeactivate}>Desactivar ABITAB</button>
             </div>
           </>
@@ -58,7 +58,7 @@ export function AbitabOperations({ onNavigate }: AbitabOperationsProps) {
               </p>
               <p>
                 No cambia tu corrupción ni suma puntos; solo agrega un flag para
-                que los textos y el Juicio Final reaccionen.
+                que los textos y el Juicio de Cristina reaccionen.
               </p>
               <button onClick={() => setShowModeInfo(false)}>Entendido</button>
             </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import type { CSSProperties } from 'react';
 import { getImageStage } from '../app/selectors';
 
@@ -10,8 +10,7 @@ interface StageImageProps {
 
 export function StageImage({ corruption, historyFlags = [], className = '' }: StageImageProps) {
   const stage = getImageStage(corruption);
-  const [imageError, setImageError] = useState(false);
-  const [opacity, setOpacity] = useState(1);
+  const [errorPath, setErrorPath] = useState<string | null>(null);
 
   const isInModal = className.includes('outcome-image');
   const isAbuelaCuetes = historyFlags.includes('abuela_cuetes');
@@ -41,17 +40,8 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
       : stagePath;
 
   const imagePath = isInModal ? modalPath : stagePath;
-  const effectiveImagePath = imageError ? stagePath : imagePath;
-
-  useEffect(() => {
-    setOpacity(0);
-    const timer = setTimeout(() => setOpacity(1), 150);
-    return () => clearTimeout(timer);
-  }, [stage]);
-
-  useEffect(() => {
-    setImageError(false);
-  }, [imagePath]);
+  const effectiveImagePath = errorPath === imagePath ? stagePath : imagePath;
+  const imageHasError = errorPath === imagePath;
 
   const getFilter = (): string => {
     switch (stage) {
@@ -106,6 +96,7 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
 
     return (
       <div
+        key={`abitab:${stage}`}
         className={className}
         style={{
           position: 'fixed',
@@ -114,9 +105,7 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
           width: '100%',
           height: '100%',
           zIndex: 0,
-          opacity,
-          transition:
-            'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease-in-out',
+          animation: 'fadeIn 0.35s ease-out',
           backgroundImage: [
             `radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.18) 0%, rgba(10, 10, 10, 0.92) 60%)`,
             `linear-gradient(135deg, rgba(196, 30, 58, 0.25) 0%, rgba(10, 10, 10, 0.9) 70%)`,
@@ -137,7 +126,7 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
 
   // Si está en el modal, renderizar de forma diferente
   if (isInModal) {
-    if (imageError) {
+    if (imageHasError) {
       return null; // No mostrar fallback en modal
     }
 
@@ -147,6 +136,7 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
 
     return (
       <img
+        key={effectiveImagePath}
         src={effectiveImagePath}
         alt={
           isAbuelaCuetes
@@ -163,20 +153,19 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
           marginBottom: '1.5rem',
           borderRadius: '8px',
           border: '2px solid var(--color-border)',
-          opacity,
-          transition: 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease-in-out',
+          animation: 'fadeIn 0.35s ease-out',
           // En modal evitamos filtros oscuros + multiply (si no, en stage alto se ve casi negro)
           filter: modalFilter,
           mixBlendMode: 'normal',
-          willChange: 'opacity, filter',
+          willChange: 'filter',
         }}
-        onError={() => setImageError(true)}
+        onError={() => setErrorPath(imagePath)}
       />
     );
   }
 
   // Comportamiento original para fondo (aunque ya no se usa en CoreGame)
-  if (imageError && !(isAbitabMode && !isInModal)) {
+  if (imageHasError && !(isAbitabMode && !isInModal)) {
     const gradientColors = [
       'radial-gradient(circle at 30% 50%, rgba(196, 30, 58, 0.4) 0%, rgba(10, 10, 10, 0.9) 70%), linear-gradient(135deg, #1e3a8a 0%, #0a0a0a 100%)',
       'radial-gradient(circle at 50% 50%, rgba(196, 30, 58, 0.5) 0%, rgba(30, 58, 138, 0.3) 50%, rgba(10, 10, 10, 0.9) 100%), linear-gradient(135deg, #8b1528 0%, #1e3a8a 100%)',
@@ -187,6 +176,7 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
 
     return (
       <div
+        key={`gradient:${stage}`}
         className={className}
         style={{
           position: 'fixed',
@@ -206,6 +196,7 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
 
   return (
     <img
+      key={effectiveImagePath}
       src={effectiveImagePath}
       alt={`Stage ${stage}`}
       className={className}
@@ -217,14 +208,14 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
         height: '100%',
         objectFit: 'cover',
         zIndex: 0,
-        opacity,
-        transition: 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease-in-out',
+        animation: 'fadeIn 0.35s ease-out',
+        transition: 'filter 0.5s ease-in-out',
         filter: getFilter(),
         mixBlendMode: getBlendMode(),
-        willChange: 'opacity, filter',
+        willChange: 'filter',
         pointerEvents: 'none',
       }}
-      onError={() => setImageError(true)}
+      onError={() => setErrorPath(imagePath)}
     />
   );
 }

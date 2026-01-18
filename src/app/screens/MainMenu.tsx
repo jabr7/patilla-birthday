@@ -1,5 +1,5 @@
 import { StageImage } from '../../components/StageImage';
-import { useGame } from '../GameProvider';
+import { useGame } from '../useGame';
 import { hasPlayedAnyGame } from '../selectors';
 import type { Screen } from '../types';
 
@@ -31,7 +31,7 @@ export function MainMenu({ onNavigate }: MainMenuProps) {
             onClick={() => onNavigate('FinalJudgment')}
             disabled={!canAccessFinalJudgment}
           >
-            Juicio Final
+            Juicio de Cristina
           </button>
         </div>
       </div>

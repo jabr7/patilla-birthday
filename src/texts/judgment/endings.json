@@ -1,0 +1,33 @@
+[
+  {
+    "id": "absolucion_prolija",
+    "title": "Absolución prolija",
+    "text": "Cristina golpea el martillo. Patilla asiente. El timeline queda limpio, como si hubieras hecho la tarea (raro).",
+    "tags": []
+  },
+  {
+    "id": "probation_institucional",
+    "title": "Condena en suspenso (institucional)",
+    "text": "No te absuelven, pero tampoco te condenan del todo. Te mandan a “hacer RI responsable” y firmar cada meme con bibliografía.",
+    "tags": []
+  },
+  {
+    "id": "condena_cursed",
+    "title": "Condena cursed",
+    "text": "El juicio se desborda. La cronología queda torcida. Patilla te mira como si fueras un PDF sin índice.",
+    "tags": []
+  },
+  {
+    "id": "toma_abitab",
+    "title": "Toma de ABITAB",
+    "text": "ABITAB interviene la sala. Hay ticket, hay sello, hay soberanía. Cristina duda. Patilla declara: “esto es la verdadera tercera posición”.",
+    "tags": ["abitab", "abitab_base"]
+  },
+  {
+    "id": "estado_uwu",
+    "title": "Estado UwU",
+    "text": "La diplomacia furry se institucionaliza. El “uwu” entra al Boletín Oficial. Patilla no sabe si reír o escribir un paper.",
+    "tags": ["furry_diplomacy"]
+  }
+]
+

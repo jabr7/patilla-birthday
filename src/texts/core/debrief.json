@@ -1,0 +1,37 @@
+[
+  "Acta del Juicio: la línea temporal sigue siendo presentable (por ahora).",
+  "Cierre del Juicio: Patilla te mira y anota todo en un Excel geopolítico.",
+  "Dictamen preliminar: sobreviviste. Nadie sabe si fue por mérito o por bug.",
+  {
+    "text": "ABITAB certifica el run: “válido, cobrable y sospechoso”.",
+    "tags": ["abitab", "abitab_base"]
+  },
+  {
+    "text": "CEICO certifica el run: te pagan en experiencia y encima te cobran interés moral.",
+    "tags": ["ceico_experience_pay", "ceico_fmi_personal", "ceico_boss_ship", "ceico_pachamama_lore"]
+  },
+  {
+    "text": "Tesis moment: este informe lo escribió tu compañero fantasma y lo subió sin avisar.",
+    "tags": ["tesis_ghost_member", "tesis_docs_war"]
+  },
+  {
+    "text": "Diplomacia furry: lograste que el “uwu” sea un instrumento de política exterior.",
+    "tags": ["furry_diplomacy"]
+  },
+  {
+    "text": "Pinguino incident: el timeline quedó raro. No preguntes.",
+    "tags": ["pinguino_incident"]
+  },
+  {
+    "text": "Civ 4 vibes: terminaste el juicio como si fuera turn-based. Nadie pasó turno.",
+    "tags": ["civ4_fan"]
+  },
+  {
+    "text": "Boca vibe: el run terminó con clima de duelo institucional en el living.",
+    "tags": ["boca_duelo"]
+  },
+  {
+    "text": "Shabat vibes: por un rato, hasta el caos descansó.",
+    "tags": ["shabbat_patch", "shabbat_ceasefire"]
+  }
+]

@@ -39,14 +39,15 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
         alignment: action.payload,
       };
     case 'PUSH_FLAG':
-      // Evitar duplicados al agregar flags manualmente
-      const flagExists = state.historyFlags.includes(action.payload);
-      return {
-        ...state,
-        historyFlags: flagExists
-          ? state.historyFlags
-          : [...state.historyFlags, action.payload],
-      };
+      {
+        const flagExists = state.historyFlags.includes(action.payload);
+        return {
+          ...state,
+          historyFlags: flagExists
+            ? state.historyFlags
+            : [...state.historyFlags, action.payload],
+        };
+      }
     case 'REMOVE_FLAG':
       return {
         ...state,

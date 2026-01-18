@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StageImage } from '../../components/StageImage';
-import { useGame } from '../GameProvider';
+import { useGame } from '../useGame';
 import { pickText, type TextEntry } from '../../utils/textPicker';
 import type { Screen } from '../types';
 import feedbackTexts from '../../texts/alignment/feedback.json';

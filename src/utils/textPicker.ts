@@ -1,5 +1,44 @@
 export type TextEntry = string | { text: string; tags?: string[] };
 
+export function pickTextSeeded(
+  bucket: TextEntry[],
+  historyFlags: string[] = [],
+  random: () => number
+): string {
+  if (bucket.length === 0) {
+    return 'Processing...';
+  }
+
+  const entries: TextEntry[] = bucket;
+
+  const taggedEntries = entries.filter(
+    (entry): entry is { text: string; tags: string[] } =>
+      typeof entry === 'object' && Array.isArray(entry.tags)
+  );
+
+  const plainEntries = entries.filter(
+    (entry): entry is string => typeof entry === 'string'
+  );
+
+  if (taggedEntries.length > 0 && historyFlags.length > 0) {
+    const matchingEntries = taggedEntries.filter((entry) =>
+      entry.tags.some((tag) => historyFlags.includes(tag))
+    );
+
+    if (matchingEntries.length > 0 && random() < 0.85) {
+      const randomIndex = Math.floor(random() * matchingEntries.length);
+      return matchingEntries[randomIndex].text;
+    }
+  }
+
+  const allTexts = plainEntries.length > 0
+    ? plainEntries
+    : taggedEntries.map((e) => e.text);
+
+  const randomIndex = Math.floor(random() * allTexts.length);
+  return allTexts[randomIndex];
+}
+
 export function pickText(
   bucket: TextEntry[],
   historyFlags: string[] = []
@@ -35,11 +74,10 @@ export function pickText(
     }
   }
 
-  // Si no hay coincidencias o falló el random, usar todos los textos disponibles
-  const allTexts = [
-    ...taggedEntries.map((e) => e.text),
-    ...plainEntries,
-  ];
+  // Si no hay coincidencias o falló el random, evitar tags no relacionados
+  const allTexts = plainEntries.length > 0
+    ? plainEntries
+    : taggedEntries.map((e) => e.text);
 
   const randomIndex = Math.floor(Math.random() * allTexts.length);
   return allTexts[randomIndex];
