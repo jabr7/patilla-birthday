@@ -1,0 +1,38 @@
+[
+  "Correcto. Patilla puede respirar: la línea temporal sigue viva.",
+  "Bien. La historia quedó prolija, como si alguien hubiera hecho el protocolo.",
+  "Respuesta correcta. No se activó el modo “lore alternativo” (todavía).",
+  "Acertaste. La cronología no se convirtió en Google Docs.",
+  "Correcto. La realidad no se hizo furry por accidente.",
+  "Bien respondido. Perón asiente desde el backstage.",
+  "Correcto. El relato no cruje. Por ahora.",
+  "Acertaste. La geopolítica sigue siendo geopolítica (no un asado).",
+  "Bien. Patilla aprueba: esto cuenta como “seriedad académica”.",
+  "Correcto. Nadie tuvo que invocar ABITAB.",
+  "Acertaste. La historia no se desvió a Civ 4.",
+  "Bien. La línea temporal quedó presentable para entregar.",
+  "Correcto. No hubo que “gestionar” el caos.",
+  "Acertaste. La pregunta quedó respondida como adulto funcional.",
+  "Bien. La realidad sigue estable, sin cutscenes raras.",
+  "Correcto. El universo sigue creyendo en vos.",
+  "Acertaste. Se mantiene el orden (y la dignidad).",
+  "Bien. Hoy ganó el conocimiento, no el impulso.",
+  "Correcto. La historia te dio el OK.",
+  "Acertaste. Cero drama, cero distorsión, cero cringe.",
+  {
+    "text": "ABITAB confirma: operación aprobada.",
+    "tags": ["abitab", "abitab_base"]
+  },
+  {
+    "text": "Modo Mujica: menos verso, más hechos. (Y Pando queda donde va.)",
+    "tags": ["pando_mujica"]
+  },
+  {
+    "text": "Tesis check: esto sí cuenta como “aporte real”.",
+    "tags": ["tesis_ghost_member", "tesis_docs_war"]
+  },
+  {
+    "text": "Shabat vibes: hoy descansó hasta el caos.",
+    "tags": ["shabbat_patch", "shabbat_ceasefire"]
+  }
+]

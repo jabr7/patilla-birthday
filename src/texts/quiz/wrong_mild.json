@@ -1,0 +1,50 @@
+[
+  "Incorrecto. Patilla acaba de inventar una versión alternativa de los hechos.",
+  "Mal. La historia se te mezcló con el lore (leve).",
+  "Incorrecto. La cronología pidió auxilio y nadie atendió.",
+  "Mal respondido. Esto suena a “yo lo vi en un meme”.",
+  "Incorrecto. La realidad se movió un casillero a la izquierda.",
+  "Mal. Se te fue la mano con la interpretación creativa.",
+  "Incorrecto. Tu respuesta fue un “capaz” con corbata.",
+  "Mal. La narrativa oficial te mira raro.",
+  "Incorrecto. Patilla escribió esto en la tesis y se lo rechazaron.",
+  "Mal respondido. Casi… pero no: fue otra línea temporal.",
+  "Incorrecto. La historia se tambalea, pero todavía se puede pilotear.",
+  "Mal. Esto quedó como intro sin desarrollo.",
+  "Incorrecto. El mundo no colapsó, pero sí se ofendió un poquito.",
+  "Mal respondido. Tu respuesta hizo “crack” como disco moribundo.",
+  "Incorrecto. Se siente el olor a cutscene.",
+  "Mal. La diplomacia te pidió fuentes.",
+  "Incorrecto. No era por ahí, era por “ahí al lado”.",
+  "Mal respondido. Se activó el modo “confusión funcional”.",
+  "Incorrecto. Esto fue un pase al vacío, pero seguimos jugando.",
+  "Mal. Te faltó un “para Patilla” y un dato clave.",
+  {
+    "text": "“Quisiste hacerme el viejo truco kirchnerista mintiéndome sobre la inflación, pero yo voté a Macri.”",
+    "tags": ["relato_k", "cadena_nacional"]
+  },
+  {
+    "text": "“Lo abrí y me encontré con parte del dinero K.”",
+    "tags": ["relato_k", "cadena_nacional"]
+  },
+  {
+    "text": "ABITAB no autoriza esa lectura histórica. Intente nuevamente.",
+    "tags": ["abitab", "abitab_base"]
+  },
+  {
+    "text": "Civ 4 te nubló: viste “victoria cultural” donde había un dato básico.",
+    "tags": ["civ4_fan"]
+  },
+  {
+    "text": "Tesis moment: el compañero dijo “yo lo hago” y vos le creíste.",
+    "tags": ["tesis_ghost_member", "tesis_docs_war"]
+  },
+  {
+    "text": "CEICO moment: te pagan en experiencia y encima erraste.",
+    "tags": ["ceico_experience_pay", "ceico_fmi_personal", "ceico_boss_ship", "ceico_pachamama_lore"]
+  },
+  {
+    "text": "Boca perdió y tu análisis también: empate técnico.",
+    "tags": ["boca_duelo"]
+  }
+]

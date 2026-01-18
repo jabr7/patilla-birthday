@@ -1,0 +1,33 @@
+[
+  "Correcto. La realidad está medio incendiada, pero Patilla sostuvo la tesis.",
+  "Acertaste. La línea temporal tembló… y vos igual entregaste.",
+  "Bien. Esto fue una respuesta con olor a protocolo, en un mundo sin protocolo.",
+  "Correcto. La corrupción aprieta, pero el conocimiento aprieta más.",
+  "Acertaste. Ganaste el punto en modo “sobrevivencia”.",
+  "Bien. La historia volvió a alinearse (a regañadientes).",
+  "Correcto. El universo quiso hacerte trolling y no pudo.",
+  "Acertaste. Esto fue diplomacia: sonreír mientras todo se cae.",
+  "Bien. Patilla recupera control del lore por un turno.",
+  "Correcto. La cronología se recompone como puede.",
+  "Acertaste. La verdad histórica hizo comeback.",
+  "Bien. Esto fue “gestionar” pero bien.",
+  "Correcto. El timeline quedó parchado, pero sirve.",
+  "Acertaste. Contra viento, marea y Google Docs.",
+  "Bien. Resististe el caos sin convertirte en NPC.",
+  {
+    "text": "ABITAB en modo emergencia: pago aceptado, realidad restaurada.",
+    "tags": ["abitab", "abitab_base"]
+  },
+  {
+    "text": "Civ 4 no te llevó esta vez: te mantuviste en la vida real.",
+    "tags": ["civ4_fan"]
+  },
+  {
+    "text": "Furry diplomático controlado: se permite un “uwu” por protocolo.",
+    "tags": ["furry_diplomacy"]
+  },
+  {
+    "text": "“Quisiste hacerme el viejo truco kirchnerista mintiéndome sobre la inflación, pero yo voté a Macri.” (Patilla, doctrina anti-relato)",
+    "tags": ["relato_k", "cadena_nacional"]
+  }
+]

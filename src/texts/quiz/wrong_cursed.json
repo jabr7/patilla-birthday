@@ -1,0 +1,45 @@
+[
+  "Incorrecto. La realidad se acaba de escribir sola, y no te pidió permiso.",
+  "Mal. La línea temporal crasheó como archivo sin backup.",
+  "Incorrecto. Se abrió un portal de lore y alguien tiró la llave.",
+  "Mal respondido. Entraste en modo “todo vale” y el universo te cobró.",
+  "Incorrecto. La cronología ahora es un collage con plasticola.",
+  "Mal. La historia se te volvió un meme, pero del malo.",
+  "Incorrecto. Esto ya no es confusión: es arte abstracto.",
+  "Mal respondido. Se distorsionó el relato y también la dignidad.",
+  "Incorrecto. Patilla siente vergüenza institucional en 4K.",
+  "Mal. La realidad quedó como tesis con aportes fantasma.",
+  "Incorrecto. El timeline está en rojo, nivel “proceda al Juicio Final”.",
+  "Mal respondido. Esto es corrupción histórica premium.",
+  "Incorrecto. La verdad se fue y dejó el visto.",
+  "Mal. La historia oficial pidió renuncia.",
+  "Incorrecto. Entraste en la era de las cutscenes inevitables.",
+  {
+    "text": "Pando se te fue a Narnia: Mujica te mira en silencio y vos sentís vergüenza institucional.",
+    "tags": ["pando_mujica"]
+  },
+  {
+    "text": "ABITAB en negativo: no hay sistema, no hay ticket, no hay Dios.",
+    "tags": ["abitab", "abitab_base"]
+  },
+  {
+    "text": "Furry diplomático sin control: el “uwu” ahora es doctrina de Estado.",
+    "tags": ["furry_diplomacy"]
+  },
+  {
+    "text": "Civ 4 tomó el mando: la realidad quedó turn-based y nadie pasa turno.",
+    "tags": ["civ4_fan"]
+  },
+  {
+    "text": "El “incidente del pingüino” se reescribió solo. No preguntes.",
+    "tags": ["pinguino_incident"]
+  },
+  {
+    "text": "Micky Vainilla aparece con un jingle: “todo está bien” (y no, no está).",
+    "tags": ["micky_vainilla_marketing"]
+  },
+  {
+    "text": "CEICO te paga en experiencia… y la experiencia te humilla.",
+    "tags": ["ceico_experience_pay", "ceico_fmi_personal", "ceico_boss_ship", "ceico_pachamama_lore"]
+  }
+]

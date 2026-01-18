@@ -1,0 +1,236 @@
+:root {
+  --color-primary: #c41e3a;
+  --color-primary-dark: #8b1528;
+  --color-secondary: #1e3a8a;
+  --color-accent: #fbbf24;
+  --color-accent-dark: #d97706;
+  --color-bg-dark: #0a0a0a;
+  --color-bg-darker: #050505;
+  --color-text: #fefefe;
+  --color-text-muted: #a3a3a3;
+  --color-border: rgba(196, 30, 58, 0.3);
+  --color-border-glow: rgba(196, 30, 58, 0.6);
+  
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-heading: 'Oswald', sans-serif;
+  --font-body: 'IBM Plex Mono', monospace;
+  
+  --shadow-propaganda: 0 8px 32px rgba(196, 30, 58, 0.4),
+                       0 4px 16px rgba(0, 0, 0, 0.8),
+                       inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --shadow-text: 2px 2px 0 rgba(0, 0, 0, 0.8),
+                 4px 4px 0 rgba(196, 30, 58, 0.3);
+  --shadow-glow: 0 0 20px rgba(196, 30, 58, 0.5),
+                 0 0 40px rgba(196, 30, 58, 0.3);
+  
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000000;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  position: relative;
+}
+
+body::before {
+  display: none;
+}
+
+body::after {
+  display: none;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+  isolation: isolate;
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 5.5rem);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-shadow: var(--shadow-text);
+  margin: 0;
+  position: relative;
+  z-index: 1;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.8);
+  margin: 0;
+}
+
+h3 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.3rem, 3vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin: 0;
+}
+
+p {
+  font-family: var(--font-body);
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+button {
+  font-family: var(--font-heading);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  border: 3px solid var(--color-primary);
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  color: var(--color-text);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: var(--shadow-propaganda);
+  overflow: hidden;
+  z-index: 1;
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+  z-index: -1;
+}
+
+button:hover:not(:disabled)::before {
+  left: 100%;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: var(--shadow-glow),
+              0 12px 40px rgba(196, 30, 58, 0.5),
+              0 6px 20px rgba(0, 0, 0, 0.9);
+  border-color: var(--color-accent);
+}
+
+button:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  filter: grayscale(0.5);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+button.correct {
+  background: linear-gradient(135deg, #166534 0%, #22c55e 100%);
+  border-color: #22c55e;
+  box-shadow: 0 8px 32px rgba(34, 197, 94, 0.4),
+              0 4px 16px rgba(0, 0, 0, 0.8);
+}
+
+button.correct:hover:not(:disabled) {
+  box-shadow: 0 0 30px rgba(34, 197, 94, 0.6),
+              0 12px 40px rgba(34, 197, 94, 0.5);
+}
+
+button.wrong {
+  background: linear-gradient(135deg, #991b1b 0%, #ef4444 100%);
+  border-color: #ef4444;
+  box-shadow: 0 8px 32px rgba(239, 68, 68, 0.4),
+              0 4px 16px rgba(0, 0, 0, 0.8);
+}
+
+button.wrong:hover:not(:disabled) {
+  box-shadow: 0 0 30px rgba(239, 68, 68, 0.6),
+              0 12px 40px rgba(239, 68, 68, 0.5);
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9) translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1) translateY(0);
+  }
+}
