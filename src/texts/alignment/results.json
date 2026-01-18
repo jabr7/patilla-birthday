@@ -1,0 +1,39 @@
+[
+  "Veredicto: Patilla te acepta en la mesa de geopolítica (con supervisión).",
+  {
+    "text": "Resultado final: **Realista duro**. Sonreís poco, pero acertás. Te traés el mundo a un Excel.",
+    "tags": ["alignment_realista_duro"]
+  },
+  {
+    "text": "Resultado final: **Mercosur enjoyer**. Integración o muerte lenta. Vas a mediar discusiones con mates.",
+    "tags": ["alignment_mercosur_enjoyer"]
+  },
+  {
+    "text": "Resultado final: **No alineado peronista**. Neutral, pero con relato épico y gesto de palco.",
+    "tags": ["alignment_no_alineado_peronista"]
+  },
+  {
+    "text": "Resultado final: **FMI trauma**. Tenés flashbacks con la palabra “reforma”. Igual seguís.",
+    "tags": ["alignment_fmi_trauma"]
+  },
+  {
+    "text": "Resultado final: **ONU burócrata**. Te emociona un buen comité. Tu arma: un PDF interminable.",
+    "tags": ["alignment_onu_burocrata"]
+  },
+  {
+    "text": "Resultado final: **Tercera posición**. Ni sí ni no: “depende”. Patilla está orgulloso.",
+    "tags": ["alignment_tercera_posicion"]
+  },
+  {
+    "text": "Resultado final: **Doctrina Estrada**. No intervención, pero con redacción impecable. Sos el escribano del mundo.",
+    "tags": ["alignment_doctrina_estrada"]
+  },
+  {
+    "text": "Resultado final: **Constructivista**. La realidad es narrativa… y vos sos el editor. Peligroso.",
+    "tags": ["alignment_constructivista"]
+  },
+  {
+    "text": "Resultado final: **Liberal**. Confiás en reglas… hasta que la historia te trolea.",
+    "tags": ["alignment_liberal"]
+  }
+]

@@ -13,9 +13,10 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
   const [imageError, setImageError] = useState(false);
   const [opacity, setOpacity] = useState(1);
 
-  const isAbuelaCuetes = historyFlags.includes('abuela_cuetes');
   const isInModal = className.includes('outcome-image');
+  const isAbuelaCuetes = historyFlags.includes('abuela_cuetes');
   const isFurryDiplomacy = historyFlags.includes('furry_diplomacy');
+  const isAbitabMode = historyFlags.includes('abitab_base');
 
   const furryPaths = ['/images/patilla_furry_1.jpeg', '/images/patilla_furry_2..jpeg'] as const;
 
@@ -30,11 +31,17 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
   const selectedFurryPath =
     furryPaths[stableIndex(historyFlags.join('|'), furryPaths.length)];
 
-  const imagePath = isAbuelaCuetes
+  const stagePath = `/images/stage${stage}.png`;
+  const abitabIconPath = '/images/abitab.jpg';
+
+  const modalPath = isAbuelaCuetes
     ? '/images/abuela_cuetes.jpeg'
-    : isInModal && isFurryDiplomacy
+    : isFurryDiplomacy
       ? selectedFurryPath
-      : `/images/stage${stage}.png`;
+      : stagePath;
+
+  const imagePath = isInModal ? modalPath : stagePath;
+  const effectiveImagePath = imageError ? stagePath : imagePath;
 
   useEffect(() => {
     setOpacity(0);
@@ -67,15 +74,80 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
     return stage >= 4 ? 'multiply' : 'normal';
   };
 
+  // Fondo especial: "modo ABITAB" (pattern repetido + gradientes)
+  if (!isInModal && isAbitabMode) {
+    const darkness = stage >= 3 ? 0.92 : 0.85;
+    const contrast = stage >= 3 ? 1.2 : 1.12;
+    const iconCount = 12;
+
+    const icons = Array.from({ length: iconCount }, (_, i) => {
+      const top = stableIndex(`abitab-top:${historyFlags.join('|')}:${stage}:${i}`, 80) + 10;
+      const left = stableIndex(`abitab-left:${historyFlags.join('|')}:${stage}:${i}`, 80) + 10;
+      const size = stableIndex(`abitab-size:${historyFlags.join('|')}:${stage}:${i}`, 90) + 60;
+      const duration = stableIndex(`abitab-dur:${historyFlags.join('|')}:${stage}:${i}`, 8) + 6;
+      const direction = stableIndex(`abitab-dir:${historyFlags.join('|')}:${stage}:${i}`, 2) === 0 ? 'normal' : 'reverse';
+
+      return (
+        <img
+          key={i}
+          src={abitabIconPath}
+          alt=""
+          className="abitab-float-icon"
+          style={{
+            top: `${top}%`,
+            left: `${left}%`,
+            ['--size' as never]: `${size}px`,
+            ['--spin-duration' as never]: `${duration}s`,
+            ['--spin-direction' as never]: direction,
+          }}
+        />
+      );
+    });
+
+    return (
+      <div
+        className={className}
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 0,
+          opacity,
+          transition:
+            'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease-in-out',
+          backgroundImage: [
+            `radial-gradient(circle at 30% 30%, rgba(251, 191, 36, 0.18) 0%, rgba(10, 10, 10, 0.92) 60%)`,
+            `linear-gradient(135deg, rgba(196, 30, 58, 0.25) 0%, rgba(10, 10, 10, 0.9) 70%)`,
+            `url(${abitabIconPath})`,
+          ].join(', '),
+          backgroundRepeat: 'no-repeat, no-repeat, repeat',
+          backgroundSize: 'cover, cover, 120px 120px',
+          backgroundPosition: 'center, center, center',
+          filter: `contrast(${contrast}) saturate(1.05) brightness(${darkness})`,
+          overflow: 'hidden',
+          pointerEvents: 'none',
+        }}
+      >
+        {icons}
+      </div>
+    );
+  }
+
   // Si está en el modal, renderizar de forma diferente
   if (isInModal) {
     if (imageError) {
       return null; // No mostrar fallback en modal
     }
 
+    const modalFilter = isAbuelaCuetes || isFurryDiplomacy
+      ? 'none'
+      : 'contrast(1.03) brightness(1.02) saturate(1.05)';
+
     return (
       <img
-        src={imagePath}
+        src={effectiveImagePath}
         alt={
           isAbuelaCuetes
             ? 'Abuela Cuetes'
@@ -93,8 +165,9 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
           border: '2px solid var(--color-border)',
           opacity,
           transition: 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease-in-out',
-          filter: getFilter(),
-          mixBlendMode: getBlendMode(),
+          // En modal evitamos filtros oscuros + multiply (si no, en stage alto se ve casi negro)
+          filter: modalFilter,
+          mixBlendMode: 'normal',
           willChange: 'opacity, filter',
         }}
         onError={() => setImageError(true)}
@@ -103,7 +176,7 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
   }
 
   // Comportamiento original para fondo (aunque ya no se usa en CoreGame)
-  if (imageError) {
+  if (imageError && !(isAbitabMode && !isInModal)) {
     const gradientColors = [
       'radial-gradient(circle at 30% 50%, rgba(196, 30, 58, 0.4) 0%, rgba(10, 10, 10, 0.9) 70%), linear-gradient(135deg, #1e3a8a 0%, #0a0a0a 100%)',
       'radial-gradient(circle at 50% 50%, rgba(196, 30, 58, 0.5) 0%, rgba(30, 58, 138, 0.3) 50%, rgba(10, 10, 10, 0.9) 100%), linear-gradient(135deg, #8b1528 0%, #1e3a8a 100%)',
@@ -122,9 +195,10 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
           width: '100%',
           height: '100%',
           background: gradientColors[stage],
-          zIndex: -1,
+          zIndex: 0,
           filter: stage >= 3 ? 'contrast(1.2) brightness(0.9)' : 'contrast(1.0) brightness(1.0)',
           transition: 'filter 0.5s ease-in-out',
+          pointerEvents: 'none',
         }}
       />
     );
@@ -132,8 +206,8 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
 
   return (
     <img
-      src={imagePath}
-      alt={isAbuelaCuetes ? 'Abuela Cuetes' : `Stage ${stage}`}
+      src={effectiveImagePath}
+      alt={`Stage ${stage}`}
       className={className}
       style={{
         position: 'fixed',
@@ -142,12 +216,13 @@ export function StageImage({ corruption, historyFlags = [], className = '' }: St
         width: '100%',
         height: '100%',
         objectFit: 'cover',
-        zIndex: -1,
+        zIndex: 0,
         opacity,
         transition: 'opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease-in-out',
         filter: getFilter(),
         mixBlendMode: getBlendMode(),
         willChange: 'opacity, filter',
+        pointerEvents: 'none',
       }}
       onError={() => setImageError(true)}
     />

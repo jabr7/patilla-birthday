@@ -1,0 +1,41 @@
+[
+  "Patilla asiente. Esto suena a RI, aunque sea en modo meme.",
+  "Tu respuesta entra en el sistema internacional sin tirar error (todavía).",
+  "OK. Esto es diplomacia: decir algo serio con cara de póker.",
+  {
+    "text": "Realismo duro: mirás el mundo y decís “poder, intereses y listo”.",
+    "tags": ["realista_duro"]
+  },
+  {
+    "text": "Mercosur enjoyer: tu solución a todo es “integración, mates y paciencia”.",
+    "tags": ["mercosur_enjoyer"]
+  },
+  {
+    "text": "No alineado peronista: neutralidad… pero con épica y gesto de palco.",
+    "tags": ["no_alineado_peronista"]
+  },
+  {
+    "text": "FMI trauma: escuchás “condicionalidad” y te baja la presión moral.",
+    "tags": ["fmi_trauma"]
+  },
+  {
+    "text": "ONU burócrata: te emocionás con un comité y un PDF de 80 páginas.",
+    "tags": ["onu_burocrata"]
+  },
+  {
+    "text": "Tercera posición: ni A ni B. Patilla intensifies.",
+    "tags": ["tercera_posicion"]
+  },
+  {
+    "text": "Doctrina Estrada: no te metés… pero lo redactás perfecto.",
+    "tags": ["doctrina_estrada"]
+  },
+  {
+    "text": "Constructivista: la realidad es un acuerdo social (y tu grupo de tesis no lo leyó).",
+    "tags": ["constructivista"]
+  },
+  {
+    "text": "Liberal: instituciones, reglas y cooperación (mientras el mundo se hace el vivo).",
+    "tags": ["liberal"]
+  }
+]

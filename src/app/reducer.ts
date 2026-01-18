@@ -47,6 +47,11 @@ export function gameReducer(state: GameState, action: GameAction): GameState {
           ? state.historyFlags
           : [...state.historyFlags, action.payload],
       };
+    case 'REMOVE_FLAG':
+      return {
+        ...state,
+        historyFlags: state.historyFlags.filter((f) => f !== action.payload),
+      };
     case 'NEXT_QUESTION':
       return {
         ...state,

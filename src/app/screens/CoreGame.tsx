@@ -15,6 +15,7 @@ interface CoreGameProps {
 interface Question {
   id: string;
   question: string;
+  tags?: string[];
   answers: Array<{
     text: string;
     correct: boolean;
@@ -26,6 +27,7 @@ const placeholderQuestions: Question[] = [
   {
     id: 'return_of_peron',
     question: '¿Cuándo volvió Perón a Argentina?',
+    tags: ['historia'],
     answers: [
       { text: '1973', correct: true },
       { text: '1972 (prólogo: ABITAB cutscene)', correct: false, flag: 'abitab' },
@@ -44,6 +46,7 @@ const placeholderQuestions: Question[] = [
   {
     id: 'hard_power_abuela_cuetes',
     question: 'En RI, ¿qué es “hard power”?',
+    tags: ['ri'],
     answers: [
       { text: 'Capacidad coercitiva (militar/económica)', correct: true },
       { text: 'Que tu abuela se gaste 10 palos en cuetes (coerción luminosa)', correct: false, flag: 'abuela_cuetes' },
@@ -62,6 +65,7 @@ const placeholderQuestions: Question[] = [
   {
     id: 'macro_crisis_meme',
     question: 'En política internacional, ¿cómo se llama cuando todo se desordena pero “se gestiona” igual?',
+    tags: ['ri'],
     answers: [
       { text: 'Crisis', correct: true },
       { text: 'Normalidad latinoamericana (modo supervivencia)', correct: false, flag: 'latam_mode' },
@@ -89,6 +93,7 @@ const placeholderQuestions: Question[] = [
   {
     id: 'cadena_nacional_cf',
     question: 'En modo anti-K, ¿qué es una “cadena nacional”?',
+    tags: ['relato_k'],
     answers: [
       { text: 'Un mensaje oficial transmitido por radio/TV', correct: true },
       { text: 'Un “stream” obligatorio donde el botón de saltar está proscripto', correct: false, flag: 'cadena_nacional' },
@@ -107,6 +112,7 @@ const placeholderQuestions: Question[] = [
   {
     id: 'ceico_unpaid',
     question: 'CEICO: ¿cuál es la doctrina económica oficial del cargo?',
+    tags: ['ceico'],
     answers: [
       { text: 'Trabajo no remunerado (vocación + mates)', correct: true },
       { text: 'Plan Platita: te pagan en “experiencia” con inflación', correct: false, flag: 'ceico_experience_pay' },
@@ -161,6 +167,7 @@ const placeholderQuestions: Question[] = [
   {
     id: 'third_position',
     question: '¿Qué era la Tercera Posición?',
+    tags: ['ri'],
     answers: [
       { text: 'Ni Washington ni Moscú', correct: true },
       { text: 'Ni Civ 4 ni tocar pasto (equilibrio espiritual)', correct: false, flag: 'civ4_fan' },
@@ -179,6 +186,7 @@ const placeholderQuestions: Question[] = [
   {
     id: 'abitab_what',
     question: 'Para Patilla, ABITAB: ¿qué es realmente?',
+    tags: ['abitab'],
     answers: [
       { text: 'Su base (spawn point)', correct: true },
       { text: 'El Ministerio de Economía pero con facturas', correct: false, flag: 'abitab' },
@@ -205,9 +213,37 @@ function shuffleArray<T>(array: T[]): T[] {
   return shuffled;
 }
 
-function selectRandomQuestions(questions: Question[], count: number): Question[] {
-  const shuffled = shuffleArray(questions);
-  return shuffled.slice(0, count);
+function shuffleQuestionAnswers(question: Question): Question {
+  return {
+    ...question,
+    answers: shuffleArray(question.answers),
+  };
+}
+
+function selectRandomQuestions(
+  questions: Question[],
+  count: number,
+  activeFlags: string[]
+): Question[] {
+  const wantsAbitabMode = activeFlags.includes('abitab_base');
+
+  const abitabQuestions = questions.filter((q) => q.tags?.includes('abitab'));
+  const otherQuestions = questions.filter((q) => !q.tags?.includes('abitab'));
+
+  const picked: Question[] = [];
+
+  if (wantsAbitabMode) {
+    const desiredAbitab = Math.min(2, count, abitabQuestions.length);
+    picked.push(...shuffleArray(abitabQuestions).slice(0, desiredAbitab));
+  }
+
+  const remaining = count - picked.length;
+  const remainingPool = otherQuestions.filter(
+    (q) => !picked.some((p) => p.id === q.id)
+  );
+  picked.push(...shuffleArray(remainingPool).slice(0, remaining));
+
+  return shuffleArray(picked).map(shuffleQuestionAnswers);
 }
 
 export function CoreGame({ onNavigate }: CoreGameProps) {
@@ -215,14 +251,19 @@ export function CoreGame({ onNavigate }: CoreGameProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [showOutcome, setShowOutcome] = useState(false);
   const [outcomeText, setOutcomeText] = useState('');
+  const [outcomeImageFlags, setOutcomeImageFlags] = useState<string[]>([]);
   const [selectedQuestions, setSelectedQuestions] = useState<Question[]>([]);
 
   useEffect(() => {
     if (selectedQuestions.length === 0) {
-      const randomQuestions = selectRandomQuestions(placeholderQuestions, state.maxQuestions);
+      const randomQuestions = selectRandomQuestions(
+        placeholderQuestions,
+        state.maxQuestions,
+        state.historyFlags
+      );
       setSelectedQuestions(randomQuestions);
     }
-  }, [state.maxQuestions]);
+  }, [state.maxQuestions, state.historyFlags, selectedQuestions.length]);
 
   const currentQ = selectedQuestions[state.currentQuestion];
   const isComplete = state.currentQuestion >= state.maxQuestions || !currentQ;
@@ -239,7 +280,9 @@ export function CoreGame({ onNavigate }: CoreGameProps) {
   if (isComplete) {
     return (
       <div className="core-game">
+        <StageImage corruption={state.corruption} historyFlags={state.historyFlags} />
         <div className="game-content">
+          <button onClick={() => onNavigate('MainMenu')}>Volver al Menú</button>
           <h2>Evaluación Completa</h2>
           <p>Procediendo al Juicio Final...</p>
         </div>
@@ -250,7 +293,9 @@ export function CoreGame({ onNavigate }: CoreGameProps) {
   if (!currentQ) {
     return (
       <div className="core-game">
+        <StageImage corruption={state.corruption} historyFlags={state.historyFlags} />
         <div className="game-content">
+          <button onClick={() => onNavigate('MainMenu')}>Volver al Menú</button>
           <h2>Cargando preguntas...</h2>
         </div>
       </div>
@@ -262,6 +307,7 @@ export function CoreGame({ onNavigate }: CoreGameProps) {
 
     const answer = currentQ.answers[index];
     setSelectedAnswer(index);
+    setOutcomeImageFlags(answer.flag ? [answer.flag] : []);
 
     // Calcular la nueva corrupción ANTES de dispatch
     const newCorruption = answer.correct
@@ -320,15 +366,18 @@ export function CoreGame({ onNavigate }: CoreGameProps) {
     setSelectedAnswer(null);
     setShowOutcome(false);
     setOutcomeText('');
+    setOutcomeImageFlags([]);
   };
 
   return (
     <div className="core-game">
+      <StageImage corruption={state.corruption} historyFlags={state.historyFlags} />
       <div className="game-content">
         <div className="question-header">
           <p>
             Pregunta {state.currentQuestion + 1} de {state.maxQuestions}
           </p>
+          <button onClick={() => onNavigate('MainMenu')}>Volver al Menú</button>
         </div>
         <h2>{currentQ.question}</h2>
         <div className="answers">
@@ -356,7 +405,7 @@ export function CoreGame({ onNavigate }: CoreGameProps) {
               <div className="outcome">
                 <StageImage 
                   corruption={state.corruption} 
-                  historyFlags={state.historyFlags}
+                  historyFlags={outcomeImageFlags}
                   className="outcome-image"
                 />
                 <p>{outcomeText}</p>

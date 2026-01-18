@@ -9,6 +9,18 @@ interface FinalJudgmentProps {
   onNavigate: (screen: Screen) => void;
 }
 
+const alignmentLabels: Record<string, string> = {
+  no_alineado_peronista: 'No alineado peronista',
+  realista_duro: 'Realista duro',
+  mercosur_enjoyer: 'Mercosur enjoyer',
+  fmi_trauma: 'FMI trauma',
+  onu_burocrata: 'ONU burócrata',
+  tercera_posicion: 'Tercera posición',
+  doctrina_estrada: 'Doctrina Estrada',
+  constructivista: 'Constructivista',
+  liberal: 'Liberal',
+};
+
 function generatePersonalizedVerdict(
   corruption: number,
   correctAnswers: number,
@@ -79,13 +91,16 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
     <div className="final-judgment">
       <StageImage corruption={state.corruption} historyFlags={state.historyFlags} />
       <div className="game-content">
+        <button onClick={() => onNavigate('MainMenu')}>Volver al Menú</button>
         <h1>{selectedTitle}</h1>
         <div className="judgment-stats">
           <p>Corrupción: {state.corruption}/5</p>
           <p>Respuestas Correctas: {state.correctAnswers}</p>
           <p>Respuestas Incorrectas: {state.wrongAnswers}</p>
           {state.alignment && (
-            <p>Alineamiento: {state.alignment}</p>
+            <p>
+              Alineamiento: {alignmentLabels[state.alignment] ?? state.alignment}
+            </p>
           )}
           {state.historyFlags.length > 0 && (
             <div>
@@ -150,9 +165,6 @@ export function FinalJudgment({ onNavigate }: FinalJudgmentProps) {
         <div className="verdict">
           {personalizedVerdict}
         </div>
-        <button onClick={() => onNavigate('MainMenu')}>
-          Volver al Menú
-        </button>
       </div>
     </div>
   );

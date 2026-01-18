@@ -19,5 +19,6 @@ export type GameAction =
   | { type: 'ANSWER_QUESTION'; payload: { correct: boolean; flag?: string } }
   | { type: 'SET_ALIGNMENT'; payload: string }
   | { type: 'PUSH_FLAG'; payload: string }
+  | { type: 'REMOVE_FLAG'; payload: string }
   | { type: 'NEXT_QUESTION' }
   | { type: 'RESET_SESSION' };
